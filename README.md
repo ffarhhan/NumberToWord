@@ -6,9 +6,15 @@ Things you may want to cover:
 
 * After Pulling Use ```bundle``` command to install the gems.
 
-* After Running console then copy paste the method from application helper file to terminal as mentioned below.
+* Run the console and then use the commands mentioned below: 
 
-* Steps To Use after Pulling the code and running rails c
-  
-  #first create a hash using cmd "import_text_file"
-  #then use this method "find_alphabet_by_number(number)" IN here you can input the mobile number
+
+  * ```helper.import_text_file``` this command helps to import the dictionary for us.
+  * After importing the hash use this command ```helper.find_alphabet_by_number(number)```
+  * Example: 
+        
+        2.7.3 :005 > helper.find_alphabet_by_number(2282668687)
+        
+        This will result in:
+        
+         => [[:acta, :mounts], [:bat, :amounts], [:bat, :contour], [:cat, :amounts], [:cat, :contour], :catamounts]
