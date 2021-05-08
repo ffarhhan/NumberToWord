@@ -1,0 +1,12 @@
+development:
+  adapter: postgresql
+  database: number_to_word_dev
+  host: localhost
+  timeout: 5000
+  username: postgres
+  password: postgres
+production:
+  adapter: postgresql
+  database: number_to_word_prod
+  host: localhost
+  timeout: 5000
