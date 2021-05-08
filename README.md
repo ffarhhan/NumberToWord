@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
 Things you may want to cover:
 
-* Ruby version
+* Pull the code from github https://github.com/ffarhhan/NumberToWord.git
 
-* System dependencies
+* After Pulling Use ```bundle``` command to install the gems.
 
-* Configuration
+* After Running console then copy paste the method from application helper file to terminal as mentioned below.
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Steps To Use after Pulling the code and running rails c
+  
+  #first create a hash using cmd "import_text_file"
+  #then use this method "find_alphabet_by_number(number)" IN here you can input the mobile number

@@ -61,8 +61,4 @@ module ApplicationHelper
     end
     $new_arr.uniq
   end
-
-  #Steps To Use
-  #first create a hash using cmd "import_text_file"
-  #then use this method "find_alphabet_by_number(number)" IN here you can input the mobile number
 end
