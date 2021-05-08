@@ -1,8 +1,7 @@
 module ApplicationHelper
   $dictionary = {}
   $hash = {}
-  $desired_output = []
-  # $test = []
+  $new_arr = []
   def import_text_file #Create a hash with key as alphabet and value as related integer
     dir = Rails.public_path.join("dictionary.txt")
     File.foreach(dir).each do |alphabet|
@@ -39,17 +38,22 @@ module ApplicationHelper
   end
   
   def find_alphabet_by_number(number) #to Find all the matching alphabet via number
+    $hash = {}
+    $new_arr = []
     $dictionary.each do |k,v|  
       $hash.merge!("#{k}": v) if (number.to_s).include?(v)
     end
-    $hash
+    get_desired_array(number)
   end
 
-  def get_desired_array(number)    #method for the desired output
+  def get_desired_array(number)   #method for the desired output
+    number = number.to_s
     for i in 1..$hash.length
       for j in 1..$hash.length
-        if ($hash.keys[i].to_s + $hash.keys[j].to_s).length == 10
-          if number.to_s.match(/^#{$hash.values[i]}/)
+        if $hash.keys[i].to_s.length == 10
+          $new_arr.push($hash.keys[i])
+        elsif ($hash.keys[i].to_s.length != 0) && ($hash.keys[i].to_s != $hash.keys[j].to_s) && ($hash.keys[i].to_s + $hash.keys[j].to_s).length == 10
+          if number.match(/^#{$hash.values[i]}/) && number.match(/#{$hash.values[j]}$/)
             $new_arr.push([$hash.keys[i],$hash.keys[j]])
           end
         end
@@ -57,4 +61,8 @@ module ApplicationHelper
     end
     $new_arr.uniq
   end
+
+  #Steps To Use
+  #first create a hash using cmd "import_text_file"
+  #then use this method "find_alphabet_by_number(number)" IN here you can input the mobile number
 end
