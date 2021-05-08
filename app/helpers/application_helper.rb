@@ -1,7 +1,8 @@
 module ApplicationHelper
   $dictionary = {}
-  $arr = []
-  $new_arr = []
+  $hash = {}
+  $desired_output = []
+  # $test = []
   def import_text_file #Create a hash with key as alphabet and value as related integer
     dir = Rails.public_path.join("dictionary.txt")
     File.foreach(dir).each do |alphabet|
@@ -38,20 +39,19 @@ module ApplicationHelper
   end
   
   def find_alphabet_by_number(number) #to Find all the matching alphabet via number
-    $dictionary.each do |k,v|
-      if (number.to_s).include?(v)
-        $arr.push(k)
-      end
+    $dictionary.each do |k,v|  
+      $hash.merge!("#{k}": v) if (number.to_s).include?(v)
     end
-    $arr
-    # get_desired_array
+    $hash
   end
 
-  def get_desired_array    #method for the desired output
-    $arr.each_with_index do |arr, i| 
-      for j in 1..$arr.length
-        if ($arr[i].to_s + $arr[j].to_s).length == 10
-          $new_arr.push([$arr[i],$arr[j]])
+  def get_desired_array(number)    #method for the desired output
+    for i in 1..$hash.length
+      for j in 1..$hash.length
+        if ($hash.keys[i].to_s + $hash.keys[j].to_s).length == 10
+          if number.to_s.match(/^#{$hash.values[i]}/)
+            $new_arr.push([$hash.keys[i],$hash.keys[j]])
+          end
         end
       end
     end
